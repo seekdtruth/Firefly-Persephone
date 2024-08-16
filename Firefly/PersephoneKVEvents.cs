@@ -1,45 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-using Azure.Messaging.EventHubs;
-
+// Default URL for triggering event grid function in the local environment.
+// http://localhost:7071/runtime/webhooks/EventGrid?functionName={functionname}
 using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
 using Microsoft.Extensions.Logging;
+using Azure.Messaging;
 
 namespace Firefly
 {
     public static class PersephoneKVEvents
     {
         [FunctionName("PersephoneKVEvents")]
-        public static async Task Run([EventHubTrigger("persephone", Connection = "EVENT_GRID_CONN_STR")] EventData[] events, ILogger log)
+        public static void Run([EventGridTrigger]CloudEvent cloudEvent, ILogger log)
         {
-            var exceptions = new List<Exception>();
-
-            foreach (EventData eventData in events)
-            {
-                try
-                {
-                    log.LogInformation($"C# Event Hub trigger function processed a message: {eventData.EventBody}");
-                    await Task.Yield();
-                }
-                catch (Exception e)
-                {
-                    // We need to keep processing the rest of the batch - capture this exception and continue.
-                    // Also, consider capturing details of the message that failed processing so it can be processed again later.
-                    log.LogError(e, e.StackTrace);
-                    exceptions.Add(e);
-                }
-            }
-
-            // Once processing of the batch is complete, if any messages in the batch failed processing throw an exception so that there is a record of the failure.
-
-            if (exceptions.Count > 1)
-                throw new AggregateException(exceptions);
-
-            if (exceptions.Count == 1)
-                throw exceptions.Single();
+            log.LogInformation("Event received {type} {subject}: {data}", cloudEvent.Type, cloudEvent.Subject, cloudEvent.Data.ToString());
         }
     }
 }
