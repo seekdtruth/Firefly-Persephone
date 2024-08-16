@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35208.52
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Firefly", "Firefly\Firefly.csproj", "{0D829C9D-8FB5-43F9-8152-1CAB619E65CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Firefly-Dotnet", "Firefly\Firefly-Dotnet.csproj", "{0D829C9D-8FB5-43F9-8152-1CAB619E65CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersephoneAlerting", "Persephone\PersephoneAlerting.csproj", "{BE1578DA-3B3F-48BC-8DE1-A5F890154B27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersephoneAlerting", "Persephone\PersephoneAlerting.csproj", "{BE1578DA-3B3F-48BC-8DE1-A5F890154B27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
