@@ -13,6 +13,8 @@ namespace Persephone
         [FunctionName("PersephoneResourceGroupChanges")]
         public static void Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
         {
+            log.LogInformation($"Subject:{eventGridEvent.Subject} at {eventGridEvent.EventTime} - Type:'{eventGridEvent.EventType}' - Topic:'{eventGridEvent.Topic}'");
+
             log.LogInformation(eventGridEvent.Data.ToString());
         }
     }
