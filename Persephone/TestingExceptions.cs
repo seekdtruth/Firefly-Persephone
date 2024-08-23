@@ -13,7 +13,7 @@ namespace PersephoneAlerting
     public static class TestingExceptions
     {
         [FunctionName("TestException")]
-        public static async Task<IActionResult> Run(
+        public static async Task<IActionResult> RunAsync(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
