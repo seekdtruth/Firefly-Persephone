@@ -30,14 +30,14 @@ namespace UnitTests
 
         public override IHeaderDictionary Headers { get; } = new HeaderDictionary();
 
-        public override IRequestCookieCollection Cookies { get; set; }
+        public override IRequestCookieCollection? Cookies { get; set; }
         public override long? ContentLength { get; set; }
         public override string ContentType { get; set; }
         public override Stream Body { get; set; }
 
         public override bool HasFormContentType { get; } = false;
 
-        public override IFormCollection Form { get; set; }
+        public override IFormCollection? Form { get; set; }
 
         public override Task<IFormCollection> ReadFormAsync(CancellationToken cancellationToken = default)
         {
