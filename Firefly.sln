@@ -34,11 +34,8 @@ Global
 		{456485C1-9FC5-4BF9-BA26-260299F0D68E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{456485C1-9FC5-4BF9-BA26-260299F0D68E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{456485C1-9FC5-4BF9-BA26-260299F0D68E}.Firefly-Release|Any CPU.ActiveCfg = Release|Any CPU
-		{456485C1-9FC5-4BF9-BA26-260299F0D68E}.Firefly-Release|Any CPU.Build.0 = Release|Any CPU
 		{456485C1-9FC5-4BF9-BA26-260299F0D68E}.Persephone-Release|Any CPU.ActiveCfg = Release|Any CPU
-		{456485C1-9FC5-4BF9-BA26-260299F0D68E}.Persephone-Release|Any CPU.Build.0 = Release|Any CPU
 		{456485C1-9FC5-4BF9-BA26-260299F0D68E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{456485C1-9FC5-4BF9-BA26-260299F0D68E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
