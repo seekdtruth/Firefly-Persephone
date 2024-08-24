@@ -5,7 +5,7 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.EventGrid;
 using Microsoft.Extensions.Logging;
 
-namespace Persephone
+namespace Persephone.UnitTests
 {
     public static class PersephoneResourceGroupChanges
     {
