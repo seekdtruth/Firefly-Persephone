@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersephoneAlerting", "Perse
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{456485C1-9FC5-4BF9-BA26-260299F0D68E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Firefly-Isolated", "Firefly-Isolated\Firefly-Isolated.csproj", "{AEDB878D-F476-4DA8-9B94-51E7E0DEBEAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Firefly-Isolated", "Firefly-Isolated\Firefly-Isolated.csproj", "{AEDB878D-F476-4DA8-9B94-51E7E0DEBEAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,6 +22,7 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{0D829C9D-8FB5-43F9-8152-1CAB619E65CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0D829C9D-8FB5-43F9-8152-1CAB619E65CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D829C9D-8FB5-43F9-8152-1CAB619E65CE}.Firefly-Isolated-Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D829C9D-8FB5-43F9-8152-1CAB619E65CE}.Firefly-Release|Any CPU.ActiveCfg = Firefly-Release|Any CPU
 		{0D829C9D-8FB5-43F9-8152-1CAB619E65CE}.Firefly-Release|Any CPU.Build.0 = Firefly-Release|Any CPU
 		{0D829C9D-8FB5-43F9-8152-1CAB619E65CE}.Persephone-Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -29,6 +30,7 @@ Global
 		{0D829C9D-8FB5-43F9-8152-1CAB619E65CE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BE1578DA-3B3F-48BC-8DE1-A5F890154B27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BE1578DA-3B3F-48BC-8DE1-A5F890154B27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE1578DA-3B3F-48BC-8DE1-A5F890154B27}.Firefly-Isolated-Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE1578DA-3B3F-48BC-8DE1-A5F890154B27}.Firefly-Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE1578DA-3B3F-48BC-8DE1-A5F890154B27}.Persephone-Release|Any CPU.ActiveCfg = Persephone-Release|Any CPU
 		{BE1578DA-3B3F-48BC-8DE1-A5F890154B27}.Persephone-Release|Any CPU.Build.0 = Persephone-Release|Any CPU
@@ -36,6 +38,7 @@ Global
 		{BE1578DA-3B3F-48BC-8DE1-A5F890154B27}.Release|Any CPU.Build.0 = Release|Any CPU
 		{456485C1-9FC5-4BF9-BA26-260299F0D68E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{456485C1-9FC5-4BF9-BA26-260299F0D68E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{456485C1-9FC5-4BF9-BA26-260299F0D68E}.Firefly-Isolated-Release|Any CPU.ActiveCfg = Release|Any CPU
 		{456485C1-9FC5-4BF9-BA26-260299F0D68E}.Firefly-Release|Any CPU.ActiveCfg = Release|Any CPU
 		{456485C1-9FC5-4BF9-BA26-260299F0D68E}.Persephone-Release|Any CPU.ActiveCfg = Release|Any CPU
 		{456485C1-9FC5-4BF9-BA26-260299F0D68E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -43,6 +46,8 @@ Global
 		{AEDB878D-F476-4DA8-9B94-51E7E0DEBEAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEDB878D-F476-4DA8-9B94-51E7E0DEBEAD}.Firefly-Isolated-Release|Any CPU.ActiveCfg = FireflyIsolated-Release|Any CPU
 		{AEDB878D-F476-4DA8-9B94-51E7E0DEBEAD}.Firefly-Isolated-Release|Any CPU.Build.0 = FireflyIsolated-Release|Any CPU
+		{AEDB878D-F476-4DA8-9B94-51E7E0DEBEAD}.Firefly-Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEDB878D-F476-4DA8-9B94-51E7E0DEBEAD}.Persephone-Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEDB878D-F476-4DA8-9B94-51E7E0DEBEAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEDB878D-F476-4DA8-9B94-51E7E0DEBEAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
