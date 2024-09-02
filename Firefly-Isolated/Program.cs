@@ -2,7 +2,11 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-var host = new HostBuilder()
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        var host = new HostBuilder()
     .ConfigureFunctionsWebApplication()
     .ConfigureServices(services =>
     {
@@ -11,4 +15,6 @@ var host = new HostBuilder()
     })
     .Build();
 
-host.Run();
+        host.Run();
+    }
+}
