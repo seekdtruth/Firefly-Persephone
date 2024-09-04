@@ -9,10 +9,12 @@ namespace Firefly_Isolated
     public class GenerateLogsWithRequestLogger
     {
         private ILogger logger;
+        private ILogger<GenerateLogsWithRequestLogger> loggerFromFactory;
 
-        public GenerateLogsWithRequestLogger(ILogger logger)
+        public GenerateLogsWithRequestLogger(ILogger logger, ILoggerFactory loggerFactory)
         {
             this.logger = logger;
+            this.loggerFromFactory = loggerFactory.CreateLogger<GenerateLogsWithRequestLogger>();
         }
 
         [FunctionName("GenerateLogsWithRequestLogger")]
@@ -40,6 +42,21 @@ namespace Firefly_Isolated
             logger.LogWarning("Logging warning");
             logger.LogError("Logging error");
             logger.LogCritical("Logging critical");
+
+            return new OkResult();
+        }
+
+
+        [FunctionName("GenerateLogsWithHostLoggerFactoryLogger")]
+        public IActionResult GenerateLogsWithHostLoggerFactoryLogger(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
+            ILogger log)
+        {
+            loggerFromFactory.LogDebug("Logging Debug");
+            loggerFromFactory.LogMetric("Logging metric", 100);
+            loggerFromFactory.LogWarning("Logging warning");
+            loggerFromFactory.LogError("Logging error");
+            loggerFromFactory.LogCritical("Logging critical");
 
             return new OkResult();
         }
