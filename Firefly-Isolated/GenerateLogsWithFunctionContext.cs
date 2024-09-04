@@ -18,6 +18,7 @@ namespace Firefly_Isolated
         public IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req, FunctionContext context)
         {
             _logger.LogInformation("Logging with Ctor DI Logger - C# HTTP trigger function processed a request.");
+            var contextLogger = context.GetLogger<GenerateLogsWithFunctionContext>();
             context.GetLogger<GenerateLogsWithFunctionContext>().LogInformation($"Logging with FunctionContext context.(GetLogger<{nameof(GenerateLogsWithFunctionContext)}>()");
             context.GetLogger(nameof(GenerateLogsWithFunctionContext)).LogInformation($"Logging with FunctionContext context.(GetLogger({nameof(GenerateLogsWithFunctionContext)})");
 
