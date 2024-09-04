@@ -14,6 +14,7 @@ namespace PersephoneAlerting
             ILogger log)
         {
             log.LogDebug("Logging Debug");
+            log.LogInformation("Logging information");
             log.LogMetric("Logging metric", 100);
             log.LogWarning("Logging warning");
             log.LogError("Logging error");
