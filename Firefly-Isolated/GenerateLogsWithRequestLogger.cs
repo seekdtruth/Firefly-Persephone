@@ -4,7 +4,7 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
 
-namespace Firefly_Isolated
+namespace Firefly.Isolated
 {
     public class GenerateLogsWithRequestLogger
     {

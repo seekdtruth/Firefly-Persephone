@@ -6,6 +6,8 @@ using Microsoft.Extensions.Logging.ApplicationInsights;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
+namespace Firefly.Isolated;
+
 internal class Program
 {
     private static void Main(string[] args)
