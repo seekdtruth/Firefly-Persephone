@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Firefly_Isolated": {
+    "Firefly.Isolated": {
       "commandName": "Project",
       "commandLineArgs": "--port 7210",
       "launchBrowser": false
