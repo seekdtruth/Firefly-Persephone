@@ -19,10 +19,7 @@ namespace Firefly.Isolated
         {
             _logger.LogInformation("Logging with Ctor DI Logger - C# HTTP trigger function processed a request.");
             var contextLogger = context.GetLogger<GenerateLogsWithFunctionContext>();
-            context.GetLogger<GenerateLogsWithFunctionContext>().LogInformation($"Logging with FunctionContext context.(GetLogger<{nameof(GenerateLogsWithFunctionContext)}>()");
-            context.GetLogger(nameof(GenerateLogsWithFunctionContext)).LogInformation($"Logging with FunctionContext context.(GetLogger({nameof(GenerateLogsWithFunctionContext)})");
-
-            context.GetLogger(nameof(GenerateLogsWithFunctionContext)).LogInformation($"Logging with FunctionContext context.(GetLogger({nameof(GenerateLogsWithFunctionContext)}, context.InvocationId)", context.InvocationId);
+            contextLogger.LogInformation($"Logging with FunctionContext context.(GetLogger<{nameof(GenerateLogsWithFunctionContext)}>()");
             return new OkObjectResult("Welcome to Azure Functions!");
         }
     }
