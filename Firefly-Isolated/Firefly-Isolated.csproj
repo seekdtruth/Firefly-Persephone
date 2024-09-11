@@ -5,7 +5,7 @@
     <OutputType>Exe</OutputType>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>Firefly_Isolated</RootNamespace>
+    <RootNamespace>Firefly.Isolated</RootNamespace>
     <Configurations>Debug;Release;FireflyIsolated-Release</Configurations>
   </PropertyGroup>
   <ItemGroup>
