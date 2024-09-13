@@ -8,43 +8,43 @@ namespace Firefly.Isolated
 {
     public class GenerateLogs
     {
-        private ILogger<GenerateLogs> loggerFromFactory;
+        private ILogger<GenerateLogs> loggerFromDI;
 
-        public GenerateLogs(ILoggerFactory loggerFactory)
+        public GenerateLogs(ILogger<GenerateLogs> logger)
         {
-            this.loggerFromFactory = loggerFactory.CreateLogger<GenerateLogs>();
+            this.loggerFromDI = logger;
         }
 
-        [FunctionName("GenerateLogsWithDependencyInjectedLogger")]
-        public IActionResult Run(
+        [FunctionName(nameof(GenerateLogsWithRequestLogger))]
+        public IActionResult GenerateLogsWithRequestLogger(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogDebug("Logging Debug");
-            log.LogMetric("Logging metric", 100);
-            log.LogInformation("Logging information");
-            log.LogWarning("Logging warning");
-            log.LogError("Logging error");
-            log.LogCritical("Logging critical");
+            log.LogDebug("Logging Debug from Request Logger");
+            log.LogMetric("Logging metric from Request Logger", 100);
+            log.LogInformation("Logging information from Request Logger");
+            log.LogWarning("Logging warning from Request Logger");
+            log.LogError("Logging error from Request Logger");
+            log.LogCritical("Logging critical from Request Logger");
 
             return new OkResult();
         }
 
-        [FunctionName("GenerateLogsWithHostLoggerFactoryLogger")]
-        public IActionResult GenerateLogsWithHostLoggerFactoryLogger(
+        [FunctionName(nameof(GenerateLogsWithDependencyInjectedLogger))]
+        public IActionResult GenerateLogsWithDependencyInjectedLogger(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req, FunctionContext context)
         {
-            loggerFromFactory.LogDebug("Logging Debug with Logger from HostFactory");
-            loggerFromFactory.LogMetric("Logging metric with Logger from HostFactory", 100);
-            loggerFromFactory.LogInformation("Logging information with Logger from HostFactory");
-            loggerFromFactory.LogWarning("Logging warning with Logger from HostFactory");
-            loggerFromFactory.LogError("Logging error with Logger from HostFactory");
-            loggerFromFactory.LogCritical("Logging critical with Logger from HostFactory");
+            loggerFromDI.LogDebug("Logging Debug with Logger from GenerateLogsWithDependencyInjectedLogger");
+            loggerFromDI.LogMetric("Logging metric with Logger from GenerateLogsWithDependencyInjectedLogger", 100);
+            loggerFromDI.LogInformation("Logging information with Logger from GenerateLogsWithDependencyInjectedLogger");
+            loggerFromDI.LogWarning("Logging warning with Logger from GenerateLogsWithDependencyInjectedLogger");
+            loggerFromDI.LogError("Logging error with Logger from GenerateLogsWithDependencyInjectedLogger");
+            loggerFromDI.LogCritical("Logging critical with Logger from GenerateLogsWithDependencyInjectedLogger");
 
             return new OkResult();
         }
 
-        //[Function("GenerateLogsWithFunctionContext")]
+        [Function(nameof(GenerateLogsWithFunctionContext))]
         public IActionResult GenerateLogsWithFunctionContext([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req, FunctionContext context)
         {
             var contextLogger = context.GetLogger<GenerateLogs>();
