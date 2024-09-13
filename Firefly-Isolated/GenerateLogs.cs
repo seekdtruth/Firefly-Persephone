@@ -8,12 +8,10 @@ namespace Firefly.Isolated
 {
     public class GenerateLogs
     {
-        private ILogger logger;
         private ILogger<GenerateLogs> loggerFromFactory;
 
-        public GenerateLogs(ILogger logger, ILoggerFactory loggerFactory)
+        public GenerateLogs(ILoggerFactory loggerFactory)
         {
-            this.logger = logger;
             this.loggerFromFactory = loggerFactory.CreateLogger<GenerateLogs>();
         }
 
@@ -32,27 +30,9 @@ namespace Firefly.Isolated
             return new OkResult();
         }
 
-
-        [FunctionName("GenerateLogsWithHostLogger")]
-        public IActionResult RunGenerateLogsWithHostLogger(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
-            ILogger log)
-        {
-            logger.LogDebug("Logging Debug with HostLogger");
-            logger.LogMetric("Logging metric with HostLogger", 100);
-            logger.LogInformation("Logging information with HostLogger");
-            logger.LogWarning("Logging warning with HostLogger");
-            logger.LogError("Logging error with HostLogger");
-            logger.LogCritical("Logging critical with HostLogger");
-
-            return new OkResult();
-        }
-
-
         [FunctionName("GenerateLogsWithHostLoggerFactoryLogger")]
         public IActionResult GenerateLogsWithHostLoggerFactoryLogger(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
-            ILogger log)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req, FunctionContext context)
         {
             loggerFromFactory.LogDebug("Logging Debug with Logger from HostFactory");
             loggerFromFactory.LogMetric("Logging metric with Logger from HostFactory", 100);
@@ -64,11 +44,11 @@ namespace Firefly.Isolated
             return new OkResult();
         }
 
-        [Function("GenerateLogsWithFunctionContext")]
+        //[Function("GenerateLogsWithFunctionContext")]
         public IActionResult GenerateLogsWithFunctionContext([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req, FunctionContext context)
         {
-            var contextLogger = context.GetLogger<GenerateLogsWithFunctionContext>();
-            contextLogger.LogInformation($"Logging with FunctionContext context.(GetLogger<{nameof(GenerateLogsWithFunctionContext)}>()");
+            var contextLogger = context.GetLogger<GenerateLogs>();
+            contextLogger.LogInformation($"Logging with FunctionContext context.(GetLogger<{nameof(GenerateLogs)}>()");
             return new OkObjectResult("Welcome to Azure Functions!");
         }
 
