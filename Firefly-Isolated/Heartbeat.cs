@@ -14,8 +14,7 @@ namespace Firefly.Isolated
         }
 
         [Function(nameof(Heartbeat))]
-        [FixedDelayRetry(5, "00:00:10")]
-        public void Run([TimerTrigger("0 */1 * * * *")] TimerInfo myTimer)
+        public void Run([TimerTrigger("0 */1 * * * *")] TimerInfo myTimer, FunctionContext context)
         {
             _logger.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
             
