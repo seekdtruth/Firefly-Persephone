@@ -3,7 +3,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <AzureFunctionsVersion>v4</AzureFunctionsVersion>
     <OutputType>Exe</OutputType>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <ImplicitUsings>disabled</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>Firefly.Isolated</RootNamespace>
     <Configurations>Debug;Release;FireflyIsolated-Release</Configurations>
