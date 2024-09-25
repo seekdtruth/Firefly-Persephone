@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersephoneAlerting", "Perse
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{456485C1-9FC5-4BF9-BA26-260299F0D68E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{2A71440E-92F1-4CE2-98BD-26BC107AAB09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "Utilities\Utilities.csproj", "{2A71440E-92F1-4CE2-98BD-26BC107AAB09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,6 +48,14 @@ Global
 		{2A71440E-92F1-4CE2-98BD-26BC107AAB09}.Persephone-Release|Any CPU.Build.0 = Release|Any CPU
 		{2A71440E-92F1-4CE2-98BD-26BC107AAB09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A71440E-92F1-4CE2-98BD-26BC107AAB09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Firefly-Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Firefly-Release|Any CPU.Build.0 = Release|Any CPU
+		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Persephone-Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Persephone-Release|Any CPU.Build.0 = Release|Any CPU
+		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
