@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using Microsoft.Extensions.Hosting;
-using Environment = Firefly.Core.Environment;
+using Environment = Firefly.Core.Configurations.Environment;
 
-namespace Utilities.Extensions
+namespace Firefly.Utilities.Extensions
 {
     public static class EnvironmentExtensions
     {
@@ -34,7 +34,6 @@ namespace Utilities.Extensions
             if (hostingEnvironment.IsStaging()) return Environment.Staging;
 
             return Environment.Local;
-
         }
     }
 }
