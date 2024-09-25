@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\Unit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "Utilities\Utilities.csproj", "{2A71440E-92F1-4CE2-98BD-26BC107AAB09}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{5360DC02-E0B8-4EFD-B7DA-4B8A2CBEA742}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Implementation", "Implementation\Implementation.csproj", "{12D97112-C11E-48C1-9FA7-BEE07F776856}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +52,14 @@ Global
 		{2A71440E-92F1-4CE2-98BD-26BC107AAB09}.Persephone-Release|Any CPU.Build.0 = Release|Any CPU
 		{2A71440E-92F1-4CE2-98BD-26BC107AAB09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A71440E-92F1-4CE2-98BD-26BC107AAB09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5360DC02-E0B8-4EFD-B7DA-4B8A2CBEA742}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5360DC02-E0B8-4EFD-B7DA-4B8A2CBEA742}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5360DC02-E0B8-4EFD-B7DA-4B8A2CBEA742}.Firefly-Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5360DC02-E0B8-4EFD-B7DA-4B8A2CBEA742}.Firefly-Release|Any CPU.Build.0 = Release|Any CPU
+		{5360DC02-E0B8-4EFD-B7DA-4B8A2CBEA742}.Persephone-Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5360DC02-E0B8-4EFD-B7DA-4B8A2CBEA742}.Persephone-Release|Any CPU.Build.0 = Release|Any CPU
+		{5360DC02-E0B8-4EFD-B7DA-4B8A2CBEA742}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5360DC02-E0B8-4EFD-B7DA-4B8A2CBEA742}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Firefly-Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -56,6 +68,14 @@ Global
 		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Persephone-Release|Any CPU.Build.0 = Release|Any CPU
 		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12D97112-C11E-48C1-9FA7-BEE07F776856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12D97112-C11E-48C1-9FA7-BEE07F776856}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12D97112-C11E-48C1-9FA7-BEE07F776856}.Firefly-Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12D97112-C11E-48C1-9FA7-BEE07F776856}.Firefly-Release|Any CPU.Build.0 = Release|Any CPU
+		{12D97112-C11E-48C1-9FA7-BEE07F776856}.Persephone-Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12D97112-C11E-48C1-9FA7-BEE07F776856}.Persephone-Release|Any CPU.Build.0 = Release|Any CPU
+		{12D97112-C11E-48C1-9FA7-BEE07F776856}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12D97112-C11E-48C1-9FA7-BEE07F776856}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

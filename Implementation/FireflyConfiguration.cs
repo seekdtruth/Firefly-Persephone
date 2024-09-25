@@ -1,11 +1,21 @@
-﻿using Azure.Core;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Azure.Core;
 using Azure.Identity;
+using Firefly.Core;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Primitives;
 using Utilities.Extensions;
+using Environment = Firefly.Core.Environment;
 
-namespace Utilities.Configurations
+namespace Firefly.Implementation
 {
+    /// <summary>
+    /// Represents an implementation of an <see cref="IFireflyConfiguration"/>
+    /// </summary>
     public class FireflyConfiguration : IFireflyConfiguration
     {
         private static readonly string KeyVaultTenantIdKey = "";
@@ -18,62 +28,86 @@ namespace Utilities.Configurations
         private readonly string _keyVaultTenantId;
         private readonly string _KeyVaultName;
 
-        public FireflyConfiguration(IConfiguration configuration) 
+        private readonly Environment _environment;
+
+        private readonly ILogger<FireflyConfiguration> _logger;
+
+        /// <summary>
+        /// Creates an instance of a <see cref="FireflyConfiguration"/>
+        /// </summary>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="configuration"/> is null</exception>
+        public FireflyConfiguration(IConfiguration configuration, ILoggerFactory? loggerFactory) 
         {
             _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+            _environment = EnvironmentExtensions.GetEnvironment();
+            loggerFactory = loggerFactory ?? new LoggerFactory();
+            _logger = loggerFactory.CreateLogger<FireflyConfiguration>();
 
-            _keyVaultTenantId = _configuration[KeyVaultTenantIdKey] ?? throw new ArgumentNullException(KeyVaultTenantIdKey);
-            _KeyVaultName = _configuration[KeyVaultNameKey] ?? throw new ArgumentNullException(KeyVaultNameKey);
-            _keyVaultUri =  _configuration[KeyVaultUriKey].TryParseNullOrEmpty(out var s) ? new Uri(s) : throw new ArgumentNullException(KeyVaultUriKey);
+            _keyVaultTenantId = TryParseConfigurationValue(KeyVaultTenantIdKey, out var tenant) ? tenant : throw new ArgumentNullException(KeyVaultTenantIdKey);
+            _KeyVaultName = TryParseConfigurationValue(KeyVaultNameKey, out var name) ? name : throw new ArgumentNullException(KeyVaultNameKey);
+            _keyVaultUri =  TryParseConfigurationValue(KeyVaultUriKey, out var uri) ? new Uri(uri) : throw new ArgumentNullException(KeyVaultUriKey);
 
             _keyVaultCredential = string.IsNullOrWhiteSpace(_keyVaultTenantId)
                 ? new DefaultAzureCredential()
                 : new DefaultAzureCredential(new DefaultAzureCredentialOptions { VisualStudioTenantId = _keyVaultTenantId });
         }
 
+        /// <inheritdoc/>
         public string? this[string key] 
         { 
             get => _configuration[key]; 
             set => _configuration[key] = value; 
         }
 
+        /// <inheritdoc/>
         public string KeyVaultTenantId => _keyVaultTenantId;
 
+        /// <inheritdoc/>
         public string KeyVaultName => _KeyVaultName;
 
+        /// <inheritdoc/>
         public Uri KeyVaultUri => _keyVaultUri;
 
+        /// <inheritdoc/>
         public TokenCredential KeyVaultCredential => _keyVaultCredential;
 
+        /// <inheritdoc/>
+        public Environment Environment => _environment;
+
+        /// <inheritdoc/>
         public IEnumerable<IConfigurationSection> GetChildren()
         {
             return _configuration.GetChildren();
         }
 
+        /// <inheritdoc/>
         public IEnumerable<IConfigurationSection> GetChildren(string key) 
         { 
             return this.GetChildren().Select(c => c.GetSection(key)); 
         }
 
+        /// <inheritdoc/>
         public IConfigurationSection GetConfigurationSection(ConfigurationSectionType section)
         {
             return this.GetSection(section.ToString());
         }
 
+        /// <inheritdoc/>
         public IChangeToken GetReloadToken()
         {
             return _configuration.GetReloadToken();
         }
 
+        /// <inheritdoc/>
         public IConfigurationSection GetSection(string key)
         {
             return _configuration.GetSection(key);
         }
 
-        public static bool TryParseNullOrEmpty(out string value)
+        private bool TryParseConfigurationValue(string key, out string value)
         {
-            value = string.Empty;
-            return false;
+            value = _configuration[KeyVaultUriKey];
+            return value.IsNullOrWhiteSpace();
         }
     }
 }

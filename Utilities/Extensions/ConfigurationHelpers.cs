@@ -1,8 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Firefly.Core;
+using Microsoft.Extensions.Configuration;
+using Utilities.Configurations;
 
-namespace Utilities.Configurations
+namespace Utilities.Extensions
 {
-    public static class ConfigurationSectionExtensions
+    public static class ConfigurationHelpers
     {
         public static IConfigurationSection GetSection(this IFireflyConfiguration configuration, ConfigurationSectionType configurationSections)
         {
