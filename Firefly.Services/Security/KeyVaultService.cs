@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Security.KeyVault.Certificates;
 using Azure.Security.KeyVault.Secrets;
-using Firefly.Core;
 using Firefly.Core.Configurations;
 using Microsoft.Extensions.Logging;
 using Firefly.Utilities.Extensions;
+using Firefly.Core.Services;
+using Microsoft.Extensions.Configuration;
+using Firefly.Implementation.Configurations;
 
 namespace Firefly.Services.Security
 {
@@ -27,6 +29,11 @@ namespace Firefly.Services.Security
         private readonly Dictionary<string, X509Certificate2> certificateCollection = new Dictionary<string, X509Certificate2>();
 
         private readonly ILogger<KeyVaultService> logger;
+
+        public static IKeyVaultService CreateInstance(IConfiguration configuration, ILoggerFactory? loggerFactory)
+        {
+            return new KeyVaultService(new FireflyConfiguration(configuration, loggerFactory), loggerFactory);
+        }
 
         /// <summary>
         /// Creates an instance of a <see cref="KeyVaultService"/>
