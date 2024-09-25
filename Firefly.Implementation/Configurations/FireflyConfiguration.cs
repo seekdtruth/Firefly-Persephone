@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Azure.Core;
 using Azure.Identity;
-using Firefly.Core.Configurations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Primitives;
-using Firefly.Implementation.Configurations;
-using Firefly.Utilities.Extensions;
+using Firefly.Core.Configurations;
 using Environment = Firefly.Core.Configurations.Environment;
+using Firefly.Utilities.Extensions;
 
-namespace Firefly.Implementation
+namespace Firefly.Implementation.Configurations
 {
     /// <summary>
     /// Represents an implementation of an <see cref="IFireflyConfiguration"/>
@@ -36,7 +35,7 @@ namespace Firefly.Implementation
         /// Creates an instance of a <see cref="FireflyConfiguration"/>
         /// </summary>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="configuration"/> is null</exception>
-        public FireflyConfiguration(IConfiguration configuration, ILoggerFactory? loggerFactory) 
+        public FireflyConfiguration(IConfiguration configuration, ILoggerFactory? loggerFactory)
         {
             _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
             _environment = EnvironmentExtensions.GetEnvironment();
@@ -45,7 +44,7 @@ namespace Firefly.Implementation
 
             _keyVaultTenantId = GetRequiredValue(KeyVaultTenantIdKey);
             _KeyVaultName = GetRequiredValue(KeyVaultNameKey);
-            _keyVaultUri =  new Uri(GetRequiredValue(KeyVaultUriKey));
+            _keyVaultUri = new Uri(GetRequiredValue(KeyVaultUriKey));
 
             _keyVaultCredential = string.IsNullOrWhiteSpace(_keyVaultTenantId)
                 ? new DefaultAzureCredential()
@@ -53,10 +52,10 @@ namespace Firefly.Implementation
         }
 
         /// <inheritdoc/>
-        public string? this[string key] 
-        { 
-            get => _configuration[key]; 
-            set => _configuration[key] = value; 
+        public string? this[string key]
+        {
+            get => _configuration[key];
+            set => _configuration[key] = value;
         }
 
         /// <inheritdoc/>
@@ -81,21 +80,26 @@ namespace Firefly.Implementation
         }
 
         /// <inheritdoc/>
-        public IEnumerable<IConfigurationSection> GetChildren(string key) 
-        { 
-            return this.GetChildren().Select(c => c.GetSection(key)); 
+        public IEnumerable<IConfigurationSection> GetChildren(string key)
+        {
+            return GetChildren().Select(c => c.GetSection(key));
         }
 
         /// <inheritdoc/>
         public IConfigurationSection GetConfigurationSection(ConfigurationSectionType section)
         {
-            return this.GetSection(section.ToString());
+            return GetSection(section.ToString());
         }
 
         /// <inheritdoc/>
         public IChangeToken GetReloadToken()
         {
             return _configuration.GetReloadToken();
+        }
+
+        public static IFireflyConfiguration CreateFireflyConfiguration(IConfiguration config)
+        {
+            return new FireflyConfiguration(config, loggerFactory: null);
         }
 
         /// <inheritdoc/>
