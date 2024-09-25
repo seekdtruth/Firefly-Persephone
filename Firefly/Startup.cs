@@ -8,7 +8,6 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Firefly.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Utilities.Configurations;
 using Firefly.Core;
 
 [assembly: FunctionsStartup(typeof(Firefly.Dotnet.Startup))]

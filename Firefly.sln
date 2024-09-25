@@ -9,13 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersephoneAlerting", "Perse
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{456485C1-9FC5-4BF9-BA26-260299F0D68E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "Utilities\Utilities.csproj", "{2A71440E-92F1-4CE2-98BD-26BC107AAB09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Firefly.Core", "Firefly.Core\Firefly.Core.csproj", "{799685DB-1CA6-45F4-95ED-F1D8235672B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{5360DC02-E0B8-4EFD-B7DA-4B8A2CBEA742}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Firefly.Utilities", "Firefly.Utilities\Firefly.Utilities.csproj", "{C8D40E6E-C1CE-4039-BBC8-42CDB38FA0EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Firefly.Services", "Firefly.Services\Firefly.Services.csproj", "{447882D9-9FDD-4960-9BE2-DFDE7CCF8315}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Implementation", "Implementation\Implementation.csproj", "{12D97112-C11E-48C1-9FA7-BEE07F776856}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Firefly.Implementation", "Firefly.Implementation\Firefly.Implementation.csproj", "{F0A032EF-07DC-4B8A-8EEC-731B3D9A22AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,38 +44,38 @@ Global
 		{456485C1-9FC5-4BF9-BA26-260299F0D68E}.Firefly-Release|Any CPU.ActiveCfg = Release|Any CPU
 		{456485C1-9FC5-4BF9-BA26-260299F0D68E}.Persephone-Release|Any CPU.ActiveCfg = Release|Any CPU
 		{456485C1-9FC5-4BF9-BA26-260299F0D68E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2A71440E-92F1-4CE2-98BD-26BC107AAB09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2A71440E-92F1-4CE2-98BD-26BC107AAB09}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2A71440E-92F1-4CE2-98BD-26BC107AAB09}.Firefly-Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2A71440E-92F1-4CE2-98BD-26BC107AAB09}.Firefly-Release|Any CPU.Build.0 = Release|Any CPU
-		{2A71440E-92F1-4CE2-98BD-26BC107AAB09}.Persephone-Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2A71440E-92F1-4CE2-98BD-26BC107AAB09}.Persephone-Release|Any CPU.Build.0 = Release|Any CPU
-		{2A71440E-92F1-4CE2-98BD-26BC107AAB09}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2A71440E-92F1-4CE2-98BD-26BC107AAB09}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5360DC02-E0B8-4EFD-B7DA-4B8A2CBEA742}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5360DC02-E0B8-4EFD-B7DA-4B8A2CBEA742}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5360DC02-E0B8-4EFD-B7DA-4B8A2CBEA742}.Firefly-Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5360DC02-E0B8-4EFD-B7DA-4B8A2CBEA742}.Firefly-Release|Any CPU.Build.0 = Release|Any CPU
-		{5360DC02-E0B8-4EFD-B7DA-4B8A2CBEA742}.Persephone-Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5360DC02-E0B8-4EFD-B7DA-4B8A2CBEA742}.Persephone-Release|Any CPU.Build.0 = Release|Any CPU
-		{5360DC02-E0B8-4EFD-B7DA-4B8A2CBEA742}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5360DC02-E0B8-4EFD-B7DA-4B8A2CBEA742}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Firefly-Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Firefly-Release|Any CPU.Build.0 = Release|Any CPU
-		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Persephone-Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Persephone-Release|Any CPU.Build.0 = Release|Any CPU
-		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A501BDAD-E7CF-4A43-8AF7-6FDA6964C2E5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{12D97112-C11E-48C1-9FA7-BEE07F776856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{12D97112-C11E-48C1-9FA7-BEE07F776856}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{12D97112-C11E-48C1-9FA7-BEE07F776856}.Firefly-Release|Any CPU.ActiveCfg = Release|Any CPU
-		{12D97112-C11E-48C1-9FA7-BEE07F776856}.Firefly-Release|Any CPU.Build.0 = Release|Any CPU
-		{12D97112-C11E-48C1-9FA7-BEE07F776856}.Persephone-Release|Any CPU.ActiveCfg = Release|Any CPU
-		{12D97112-C11E-48C1-9FA7-BEE07F776856}.Persephone-Release|Any CPU.Build.0 = Release|Any CPU
-		{12D97112-C11E-48C1-9FA7-BEE07F776856}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{12D97112-C11E-48C1-9FA7-BEE07F776856}.Release|Any CPU.Build.0 = Release|Any CPU
+		{799685DB-1CA6-45F4-95ED-F1D8235672B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{799685DB-1CA6-45F4-95ED-F1D8235672B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{799685DB-1CA6-45F4-95ED-F1D8235672B1}.Firefly-Release|Any CPU.ActiveCfg = Release|Any CPU
+		{799685DB-1CA6-45F4-95ED-F1D8235672B1}.Firefly-Release|Any CPU.Build.0 = Release|Any CPU
+		{799685DB-1CA6-45F4-95ED-F1D8235672B1}.Persephone-Release|Any CPU.ActiveCfg = Release|Any CPU
+		{799685DB-1CA6-45F4-95ED-F1D8235672B1}.Persephone-Release|Any CPU.Build.0 = Release|Any CPU
+		{799685DB-1CA6-45F4-95ED-F1D8235672B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{799685DB-1CA6-45F4-95ED-F1D8235672B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8D40E6E-C1CE-4039-BBC8-42CDB38FA0EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8D40E6E-C1CE-4039-BBC8-42CDB38FA0EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8D40E6E-C1CE-4039-BBC8-42CDB38FA0EA}.Firefly-Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8D40E6E-C1CE-4039-BBC8-42CDB38FA0EA}.Firefly-Release|Any CPU.Build.0 = Release|Any CPU
+		{C8D40E6E-C1CE-4039-BBC8-42CDB38FA0EA}.Persephone-Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8D40E6E-C1CE-4039-BBC8-42CDB38FA0EA}.Persephone-Release|Any CPU.Build.0 = Release|Any CPU
+		{C8D40E6E-C1CE-4039-BBC8-42CDB38FA0EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8D40E6E-C1CE-4039-BBC8-42CDB38FA0EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{447882D9-9FDD-4960-9BE2-DFDE7CCF8315}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{447882D9-9FDD-4960-9BE2-DFDE7CCF8315}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{447882D9-9FDD-4960-9BE2-DFDE7CCF8315}.Firefly-Release|Any CPU.ActiveCfg = Release|Any CPU
+		{447882D9-9FDD-4960-9BE2-DFDE7CCF8315}.Firefly-Release|Any CPU.Build.0 = Release|Any CPU
+		{447882D9-9FDD-4960-9BE2-DFDE7CCF8315}.Persephone-Release|Any CPU.ActiveCfg = Release|Any CPU
+		{447882D9-9FDD-4960-9BE2-DFDE7CCF8315}.Persephone-Release|Any CPU.Build.0 = Release|Any CPU
+		{447882D9-9FDD-4960-9BE2-DFDE7CCF8315}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{447882D9-9FDD-4960-9BE2-DFDE7CCF8315}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0A032EF-07DC-4B8A-8EEC-731B3D9A22AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0A032EF-07DC-4B8A-8EEC-731B3D9A22AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0A032EF-07DC-4B8A-8EEC-731B3D9A22AC}.Firefly-Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0A032EF-07DC-4B8A-8EEC-731B3D9A22AC}.Firefly-Release|Any CPU.Build.0 = Release|Any CPU
+		{F0A032EF-07DC-4B8A-8EEC-731B3D9A22AC}.Persephone-Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0A032EF-07DC-4B8A-8EEC-731B3D9A22AC}.Persephone-Release|Any CPU.Build.0 = Release|Any CPU
+		{F0A032EF-07DC-4B8A-8EEC-731B3D9A22AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0A032EF-07DC-4B8A-8EEC-731B3D9A22AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

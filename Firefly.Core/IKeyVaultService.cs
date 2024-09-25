@@ -17,7 +17,7 @@ namespace Firefly.Core
         /// <returns>Requested <see cref="KeyVaultSecret"/></returns>
         KeyVaultSecret GetSecret(string secretKey, CancellationToken cancellationToken = new CancellationToken());
 
-        /// <inheritdoc cref="GetSecret(string, CancellationToken)"/>
+        /// <inheritdoc cref="GetSecret(string, CancellationToken)"/>s
         Task<KeyVaultSecret> GetSecretAsync(string secretKey, CancellationToken cancellationToken = new CancellationToken());
 
         /// <summary>
