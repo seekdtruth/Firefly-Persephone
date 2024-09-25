@@ -17,8 +17,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Firefly.Core\Firefly.Core.csproj" />
-    <ProjectReference Include="..\Services\Services.csproj" />
-    <ProjectReference Include="..\Utilities\Utilities.csproj" />
+    <ProjectReference Include="..\Firefly.Implementation\Firefly.Implementation.csproj" />
+    <ProjectReference Include="..\Firefly.Services\Firefly.Services.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
