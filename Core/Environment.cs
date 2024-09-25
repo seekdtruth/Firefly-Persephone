@@ -1,4 +1,4 @@
-﻿namespace Core
+﻿namespace Firefly.Core
 {
     /// <summary>
     /// The current application environment.s
