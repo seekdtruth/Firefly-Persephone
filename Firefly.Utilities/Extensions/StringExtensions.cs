@@ -1,4 +1,4 @@
-﻿namespace Utilities.Extensions
+﻿namespace Firefly.Utilities.Extensions
 {
     public static class StringExtensions
     {
