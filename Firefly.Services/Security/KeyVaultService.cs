@@ -140,7 +140,7 @@ namespace Firefly.Services.Security
         {
             try
             {
-                name = name.TryParseNullOrEmpty(out var certName) ? certName : throw new ArgumentNullException(nameof(name));
+                name = name.IsNullOrWhitespace() ? name : throw new ArgumentNullException(nameof(name));
                 var task = await certificateClient.GetCertificateAsync(name, cancellationToken).ConfigureAwait(false);
                 var response = task.Value ?? throw new FileNotFoundException($"Unable to retrieve certificate: {name}");
                 var bytes = response.Cer.Any() ? response.Cer : throw new FileNotFoundException($"Certificate {name} was empty");
@@ -156,14 +156,14 @@ namespace Firefly.Services.Security
 
         private bool TryGetSecret(string secretName, out KeyVaultSecret secret)
         {
-            secretName = secretName.TryParseNullOrEmpty(out var name) ? name : throw new ArgumentNullException(nameof(secretName));
+            secretName = secretName.IsNullOrWhitespace() ? secretName : throw new ArgumentNullException(nameof(secretName));
             secret = retrievedSecrets.ContainsKey(secretName) ? retrievedSecrets[secretName] : default;
             return retrievedSecrets.ContainsKey(secretName);
         }
 
         private bool TryGetCertificate(string certificateName, out X509Certificate2 certificate)
         {
-            certificateName = certificateName.TryParseNullOrEmpty(out var name) ? name : throw new ArgumentNullException(nameof(certificateName));
+            certificateName = certificateName.IsNullOrWhitespace() ? certificateName : throw new ArgumentNullException(nameof(certificateName));
             certificate = certificateCollection.ContainsKey(certificateName) ? certificateCollection[certificateName] : new X509Certificate2();
             return certificateCollection.ContainsKey(certificateName);
         }
