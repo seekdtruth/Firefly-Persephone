@@ -12,7 +12,7 @@
       "Host.Aggregator": "Trace"
     },
     "applicationInsights": {
-      "samplingExcludedTypes": "Request",
+      "samplingExcludedTypes": "Request, Traces",
       "samplingSettings": {
         "isEnabled": true
       }

@@ -17,7 +17,7 @@ namespace Firefly.Isolated
 
         [FunctionName(nameof(GenerateLogsWithRequestLogger))]
         public IActionResult GenerateLogsWithRequestLogger(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequest req,
             ILogger log)
         {
             log.LogDebug("Logging Debug from Request Logger");
@@ -32,7 +32,7 @@ namespace Firefly.Isolated
 
         [FunctionName(nameof(GenerateLogsWithDependencyInjectedLogger))]
         public IActionResult GenerateLogsWithDependencyInjectedLogger(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req, FunctionContext context)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequest req, FunctionContext context)
         {
             loggerFromDI.LogDebug("Logging Debug with Logger from GenerateLogsWithDependencyInjectedLogger");
             loggerFromDI.LogMetric("Logging metric with Logger from GenerateLogsWithDependencyInjectedLogger", 100);
