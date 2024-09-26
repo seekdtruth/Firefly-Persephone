@@ -120,8 +120,9 @@ namespace Firefly.Services.Security
             {
                 if (TryGetCertificate(certificateName, out var certificate)) return certificate;
 
-                var response = certificateClient.GetCertificate(certificateName, cancellationToken).Value ?? throw new FileNotFoundException($"Unable to retrieve certificate: {certificateName}");
-                var bytes = response.Cer.Any() ? response.Cer : throw new FileNotFoundException($"Certificate {certificateName} was empty");
+                var response = certificateClient.GetCertificate(certificateName, cancellationToken);
+                var certificateWithPolicy = response.Value  ?? throw new FileNotFoundException($"Unable to retrieve certificate: {certificateName}");
+                var bytes = certificateWithPolicy.Cer.Any() ? certificateWithPolicy.Cer : throw new FileNotFoundException($"Certificate {certificateName} was empty");
                 var cert = new X509Certificate2(bytes);
 
                 certificateCollection.Add(certificateName, cert);
@@ -141,9 +142,9 @@ namespace Firefly.Services.Security
             try
             {
                 name = name.IsNullOrWhitespace() ? name : throw new ArgumentNullException(nameof(name));
-                var task = await certificateClient.GetCertificateAsync(name, cancellationToken).ConfigureAwait(false);
-                var response = task.Value ?? throw new FileNotFoundException($"Unable to retrieve certificate: {name}");
-                var bytes = response.Cer.Any() ? response.Cer : throw new FileNotFoundException($"Certificate {name} was empty");
+                var response = await certificateClient.GetCertificateAsync(name, cancellationToken).ConfigureAwait(false);
+                var certificateWithPolicy = response.Value ?? throw new FileNotFoundException($"Unable to retrieve certificate: {name}");
+                var bytes = certificateWithPolicy.Cer.Any() ? certificateWithPolicy.Cer : throw new FileNotFoundException($"Certificate {name} was empty");
                 var cert = new X509Certificate2(bytes);
                 return cert;
             }
