@@ -9,6 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersephoneAlerting", "Perse
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{456485C1-9FC5-4BF9-BA26-260299F0D68E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{1A3753F3-3E14-4ED9-B17C-003F8BD44373}"
+	ProjectSection(SolutionItems) = preProject
+		Firefly.Core\Firefly.Core.csproj = Firefly.Core\Firefly.Core.csproj
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
