@@ -11,15 +11,18 @@
 
   <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
-    <PackageReference Include="FluentAssertions" Version="6.12.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.1.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
-    <PackageReference Include="Moq" Version="4.20.72" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.4.0" />
     <PackageReference Include="xunit" Version="2.5.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Persephone\PersephoneAlerting.csproj" />
+    <ProjectReference Include="..\Firefly.Core\Firefly.Core.csproj" />
+    <ProjectReference Include="..\Firefly.Implementation\Firefly.Implementation.csproj" />
+    <ProjectReference Include="..\Firefly.Services\Firefly.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
