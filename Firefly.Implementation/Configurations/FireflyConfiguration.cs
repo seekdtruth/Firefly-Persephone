@@ -16,9 +16,9 @@ namespace Firefly.Implementation.Configurations
     /// </summary>
     public class FireflyConfiguration : IFireflyConfiguration
     {
-        private const string KeyVaultTenantIdKey = "KeyVault:TenantId";
-        private const string KeyVaultNameKey = "KeyVault:Name";
-        private const string KeyVaultUriKey = "KeyVault:Uri";
+        private const string KeyVaultTenantIdKey = "KeyVaultTenantId";
+        private const string KeyVaultNameKey = "KeyVaultName";
+        private const string KeyVaultUriKey = "KeyVaultUri";
 
         private readonly IConfiguration _configuration;
         private readonly ILogger<FireflyConfiguration> _logger;
@@ -33,6 +33,7 @@ namespace Firefly.Implementation.Configurations
             Environment = EnvironmentExtensions.GetEnvironment();
             loggerFactory ??= new LoggerFactory();
             _logger = loggerFactory.CreateLogger<FireflyConfiguration>();
+            _logger.LogInformation("Settings up Configuration and KeyVault credentials");
 
             KeyVaultTenantId = GetRequiredValue(KeyVaultTenantIdKey);
             KeyVaultName = GetRequiredValue(KeyVaultNameKey);
@@ -101,14 +102,14 @@ namespace Firefly.Implementation.Configurations
         private bool TryParseConfigurationValue(string key, out string value)
         {
             value = _configuration[key];
-            return value.IsNullOrWhitespace();
+            return !value.IsNullOrWhitespace();
         }
 
         private string GetRequiredValue(string key)
         {
             try
             {
-                if (!TryParseConfigurationValue(_configuration[key], out var value))
+                if (!TryParseConfigurationValue(key, out var value))
                     throw new ArgumentNullException(key);
                 return value;
             }
