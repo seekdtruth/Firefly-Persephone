@@ -1,16 +1,15 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Firefly.Core.Configurations;
+using Firefly.Implementation.Configurations;
+using Microsoft.Extensions.Configuration;
 using Moq;
-using System;
-using Utilities.Configurations;
-using Xunit;
 
 namespace UnitTests.Configurations
 {
     public class FireflyConfigurationTests
     {
-        private MockRepository mockRepository;
+        private readonly MockRepository mockRepository;
 
-        private Mock<IConfiguration> mockConfiguration;
+        private readonly Mock<IConfiguration> mockConfiguration;
 
         public FireflyConfigurationTests()
         {
@@ -19,10 +18,9 @@ namespace UnitTests.Configurations
             this.mockConfiguration = this.mockRepository.Create<IConfiguration>();
         }
 
-        private FireflyConfiguration CreateFireflyConfiguration()
+        private IFireflyConfiguration CreateFireflyConfiguration()
         {
-            return new FireflyConfiguration(
-                this.mockConfiguration.Object);
+            return FireflyConfiguration.CreateFireflyConfiguration(this.mockConfiguration.Object);
         }
 
         [Fact]
@@ -44,27 +42,10 @@ namespace UnitTests.Configurations
         {
             // Arrange
             var fireflyConfiguration = this.CreateFireflyConfiguration();
-            string key = null;
+            string key = String.Empty;
 
             // Act
-            var result = fireflyConfiguration.GetChildren(
-                key);
-
-            // Assert
-            Assert.True(false);
-            this.mockRepository.VerifyAll();
-        }
-
-        [Fact]
-        public void GetConfigurationSection_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var fireflyConfiguration = this.CreateFireflyConfiguration();
-            ConfigurationSectionType section = default(global::Utilities.Configurations.ConfigurationSectionType);
-
-            // Act
-            var result = fireflyConfiguration.GetConfigurationSection(
-                section);
+            var result = fireflyConfiguration.GetChildren();
 
             // Assert
             Assert.True(false);
