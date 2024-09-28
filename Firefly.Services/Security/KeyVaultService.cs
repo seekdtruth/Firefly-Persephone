@@ -76,7 +76,7 @@ namespace Firefly.Services.Security
             {
                 if (TryGetSecret(secretKey, out var secret)) return secret;
 
-                var response = secretClient.GetSecret(secretKey, cancellationToken: cancellationToken) 
+                var response = secretClient.GetSecret(secretKey, cancellationToken: cancellationToken)
                     ?? throw new ApplicationException($"Unable to retrieve secret: {secretKey}");
                 retrievedSecrets.Add(secretKey, response.Value);
 
@@ -91,6 +91,7 @@ namespace Firefly.Services.Security
 
         /// <inheritdoc />
         /// <exception cref="ArgumentNullException">Thrown when no secret name is provided</exception>
+        /// <exception cref="ApplicationException">Thrown when no secret is retrieved</exception>
         /// <exception cref="FileNotFoundException">Thrown when a secret isn't found for provided <paramref name="secretKey"/></exception>
         public async Task<KeyVaultSecret> GetSecretAsync(string secretKey, CancellationToken cancellationToken = new CancellationToken())
         {
@@ -98,7 +99,7 @@ namespace Firefly.Services.Security
             {
                 if (TryGetSecret(secretKey, out var secret)) return secret;
 
-                var response = await secretClient.GetSecretAsync(secretKey, cancellationToken: cancellationToken).ConfigureAwait(false) 
+                var response = await secretClient.GetSecretAsync(secretKey, cancellationToken: cancellationToken).ConfigureAwait(false)
                     ?? throw new ApplicationException($"Unable to retrieve secret: {secretKey}");
                 retrievedSecrets.Add(secretKey, response.Value);
 
@@ -136,15 +137,25 @@ namespace Firefly.Services.Security
         }
 
         /// <inheritdoc cref="GetCertificate(string, CancellationToken)"/>
-        public async Task<X509Certificate2> GetCertificateAsnc(string name, CancellationToken cancellationToken = new CancellationToken())
+        public async Task<X509Certificate2> GetCertificateAsync(string certificateName, CancellationToken cancellationToken = new CancellationToken())
         {
             try
             {
-                name = name.TryParseNullOrEmpty(out var certName) ? certName : throw new ArgumentNullException(nameof(name));
-                var task = await certificateClient.GetCertificateAsync(name, cancellationToken).ConfigureAwait(false);
-                var response = task.Value ?? throw new FileNotFoundException($"Unable to retrieve certificate: {name}");
-                var bytes = response.Cer.Any() ? response.Cer : throw new FileNotFoundException($"Certificate {name} was empty");
-                var cert = new X509Certificate2(bytes);
+                if (TryGetCertificate(certificateName, out var certificate)) return certificate;
+
+                logger.LogInformation("Getting Certificate");
+                certificateName = !certificateName.IsNullOrWhitespace() ? certificateName : throw new ArgumentNullException(nameof(certificateName));
+
+                var task = await certificateClient.GetCertificateAsync(certificateName, cancellationToken).ConfigureAwait(false);
+
+                var keyVaultCertificateWithPolicy = task.Value ?? throw new FileNotFoundException($"Unable to retrieve certificate: {certificateName}");
+
+                var bytes = keyVaultCertificateWithPolicy.Cer.Any()
+                    ? keyVaultCertificateWithPolicy.Cer
+                    : throw new FileNotFoundException($"Certificate {certificateName} was empty");
+
+                var cert = new X509Certificate2(bytes) { FriendlyName = keyVaultCertificateWithPolicy.Name };
+
                 return cert;
             }
             catch (Exception ex)
@@ -152,18 +163,57 @@ namespace Firefly.Services.Security
                 logger.LogError(ex.Message, ex);
                 throw;
             }
+            finally
+            {
+                logger.LogInformation($"Retrieval complete");
+            }
+        }
+
+        public async Task<X509Certificate2> DownloadCertificateAsync(string name, CancellationToken cancellationToken = new CancellationToken())
+        {
+            try
+            {
+                logger.LogInformation($"Entering method {nameof(DownloadCertificateAsync)}");
+
+                name = !name.IsNullOrWhitespace() ? name : throw new ArgumentNullException(nameof(name));
+
+                var task = await certificateClient.DownloadCertificateAsync(name).ConfigureAwait(false);
+
+                if (task.GetRawResponse().IsError)
+                {
+                    logger.LogError($"Response had error. {task.GetRawResponse().Status}: {task.GetRawResponse().ReasonPhrase}");
+                    throw new FileNotFoundException($"Response had error. {task.GetRawResponse().Status}: {task.GetRawResponse().ReasonPhrase}");
+                }
+
+                if (!task.HasValue)
+                {
+                    logger.LogError("Response has no value");
+                    throw new FileNotFoundException("No response was received");
+                }
+
+                return task.Value;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, ex.Message);
+                throw;
+            }
+            finally
+            {
+                logger.LogInformation($"Exiting method {nameof(DownloadCertificateAsync)}");
+            }
         }
 
         private bool TryGetSecret(string secretName, out KeyVaultSecret secret)
         {
-            secretName = secretName.TryParseNullOrEmpty(out var name) ? name : throw new ArgumentNullException(nameof(secretName));
+            secretName = !secretName.IsNullOrWhitespace() ? secretName : throw new ArgumentNullException(nameof(secretName));
             secret = retrievedSecrets.ContainsKey(secretName) ? retrievedSecrets[secretName] : default;
             return retrievedSecrets.ContainsKey(secretName);
         }
 
         private bool TryGetCertificate(string certificateName, out X509Certificate2 certificate)
         {
-            certificateName = certificateName.TryParseNullOrEmpty(out var name) ? name : throw new ArgumentNullException(nameof(certificateName));
+            certificateName = !certificateName.IsNullOrWhitespace() ? certificateName : throw new ArgumentNullException(nameof(certificateName));
             certificate = certificateCollection.ContainsKey(certificateName) ? certificateCollection[certificateName] : new X509Certificate2();
             return certificateCollection.ContainsKey(certificateName);
         }
