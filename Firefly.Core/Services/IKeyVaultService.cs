@@ -28,6 +28,13 @@ namespace Firefly.Core.Services
         X509Certificate2 GetCertificate(string name, CancellationToken cancellationToken = new CancellationToken());
 
         /// <inheritdoc cref="GetCertificate(string, CancellationToken)"/>
-        Task<X509Certificate2> GetCertificateAsnc(string name, CancellationToken cancellationToken = new CancellationToken());
+        Task<X509Certificate2> GetCertificateAsync(string certificateName, CancellationToken cancellationToken = new CancellationToken());
+
+        /// <summary>
+        /// Downloads a full certificate
+        /// </summary>
+        /// <param name="name">Name of certificate to be downloaded</param>
+        /// <returns>A full certificate with both public and private keys.</returns>
+        Task<X509Certificate2> DownloadCertificateAsync(string name, CancellationToken cancellationToken = new CancellationToken());
     }
 }
