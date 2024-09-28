@@ -69,6 +69,9 @@ namespace Firefly.Services.Security
             });
         }
 
+        public KeyVaultService(IConfiguration configuration, ILoggerFactory? loggerFactory) : this(
+            new FireflyConfiguration(configuration, loggerFactory), loggerFactory) {}
+
         /// <inheritdoc />
         public KeyVaultSecret GetSecret(string secretKey, CancellationToken cancellationToken = new CancellationToken())
         {
