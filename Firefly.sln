@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\Unit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Firefly-Isolated", "Firefly-Isolated\Firefly-Isolated.csproj", "{AEDB878D-F476-4DA8-9B94-51E7E0DEBEAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsolatedDefault", "IsolatedDefault\IsolatedDefault.csproj", "{3678A570-D263-47A6-8AB8-3DB26E34DC95}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,16 +50,6 @@ Global
 		{AEDB878D-F476-4DA8-9B94-51E7E0DEBEAD}.Persephone-Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEDB878D-F476-4DA8-9B94-51E7E0DEBEAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEDB878D-F476-4DA8-9B94-51E7E0DEBEAD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3678A570-D263-47A6-8AB8-3DB26E34DC95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3678A570-D263-47A6-8AB8-3DB26E34DC95}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3678A570-D263-47A6-8AB8-3DB26E34DC95}.Firefly-Isolated-Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3678A570-D263-47A6-8AB8-3DB26E34DC95}.Firefly-Isolated-Release|Any CPU.Build.0 = Release|Any CPU
-		{3678A570-D263-47A6-8AB8-3DB26E34DC95}.Firefly-Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3678A570-D263-47A6-8AB8-3DB26E34DC95}.Firefly-Release|Any CPU.Build.0 = Release|Any CPU
-		{3678A570-D263-47A6-8AB8-3DB26E34DC95}.Persephone-Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3678A570-D263-47A6-8AB8-3DB26E34DC95}.Persephone-Release|Any CPU.Build.0 = Release|Any CPU
-		{3678A570-D263-47A6-8AB8-3DB26E34DC95}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3678A570-D263-47A6-8AB8-3DB26E34DC95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
