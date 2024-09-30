@@ -1,0 +1,51 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionId": {
+            "value": "e2fe86fb-7fa3-4fee-86dd-bd0fd696701d"
+        },
+        "name": {
+            "value": "firefly-prod"
+        },
+        "location": {
+            "value": "West US"
+        },
+        "ftpsState": {
+            "value": "FtpsOnly"
+        },
+        "storageAccountName": {
+            "value": "fireflystoragewus"
+        },
+        "sku": {
+            "value": "Dynamic"
+        },
+        "skuCode": {
+            "value": "Y1"
+        },
+        "workerSize": {
+            "value": "0"
+        },
+        "workerSizeId": {
+            "value": "0"
+        },
+        "numberOfWorkers": {
+            "value": "1"
+        },
+        "use32BitWorkerProcess": {
+            "value": false
+        },
+        "netFrameworkVersion": {
+            "value": "v8.0"
+        },
+        "hostingPlanName": {
+            "value": "ASP-firefly-ac50"
+        },
+        "serverFarmResourceGroup": {
+            "value": "firefly"
+        },
+        "alwaysOn": {
+            "value": false
+        }
+    }
+}
