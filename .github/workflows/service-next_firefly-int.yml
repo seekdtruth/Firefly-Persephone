@@ -1,13 +1,16 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/azure/functions-action
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: firefly-prod - staging - Build and deploy dotnet core app to Azure Function App
+name: firefly-int - Build and deploy dotnet core app to Azure Function App
 
 on:
+  push:
+    branches:
+      - service-next
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'Firefly/Firefly' # set this to the path to your web app project, defaults to the repository root
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'Firefly\Firefly' # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '8.0.x' # set this to the dotnet version to use
 
 jobs:
@@ -36,15 +39,15 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_C82C75048B0741F1BFDCE39EE30621BE }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_F8AD0A5FF05A4B36A88B849DC7013F50 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_41C5718E916846FBAACB8DB580B4BBF1 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_19CA87FB95854A4FB3298C7782E1D88E }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_98F2BB93412B401D9EB645D32BFBDD28 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_3A784E76CE9C4388AA6BD72999507A37 }}
 
       - name: 'Run Azure Functions Action'
         uses: Azure/functions-action@v1
         id: fa
         with:
-          app-name: 'firefly-prod'
-          slot-name: 'staging'
+          app-name: 'firefly-int'
+          slot-name: 'Production'
           package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
           
