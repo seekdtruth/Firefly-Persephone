@@ -39,7 +39,7 @@ namespace Firefly.Utilities.Extensions
         /// </summary>
         /// <param name="hostingEnvironment">The current <see cref="IHostingEnvironment"/></param>
         /// <returns>Associated <see cref="Environment"/></returns>
-        public static Environment GetEnvironment(this IHostingEnvironment hostingEnvironment)
+        public static Environment GetEnvironment(this IHostEnvironment hostingEnvironment)
         {
             if (hostingEnvironment.IsProduction()) return Environment.Production;
             if (hostingEnvironment.IsDevelopment()) return Environment.Integration;
