@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using Azure.Core;
 using Azure.Identity;
+using Firefly.Core.Configurations;
+using Firefly.Utilities.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Primitives;
-using Firefly.Core.Configurations;
 using Environment = Firefly.Core.Configurations.Environment;
-using Firefly.Utilities.Extensions;
 
 namespace Firefly.Implementation.Configurations
 {
@@ -30,12 +30,13 @@ namespace Firefly.Implementation.Configurations
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="configuration"/> is null</exception>
         public FireflyConfiguration(IConfiguration configuration, ILoggerFactory? loggerFactory)
         {
+            loggerFactory ??= new LoggerFactory();
+            _logger = loggerFactory.CreateLogger<FireflyConfiguration>();
+
             try
             {
                 _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
                 Environment = EnvironmentExtensions.GetEnvironment();
-                loggerFactory ??= new LoggerFactory();
-                _logger = loggerFactory.CreateLogger<FireflyConfiguration>();
 
                 KeyVaultTenantId = TryParseConfigurationValue(KeyVaultTenantIdKey, out var value) 
                     ? value : String.Empty;
@@ -126,7 +127,7 @@ namespace Firefly.Implementation.Configurations
 
         private bool TryParseConfigurationValue(string key, out string value)
         {
-            value = _configuration[key];
+            value = _configuration[key] ?? string.Empty;
             return value.IsNullOrWhitespace();
         }
 
@@ -134,7 +135,7 @@ namespace Firefly.Implementation.Configurations
         {
             try
             {
-                if (!TryParseConfigurationValue(_configuration[key], out var value))
+                if (!TryParseConfigurationValue(key, out var value))
                     throw new ArgumentNullException(key);
                 return value;
             }
